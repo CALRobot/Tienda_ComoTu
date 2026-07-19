@@ -485,18 +485,30 @@ body {
 
 /* En pantallas pequeñas adaptamos el modal */
 @media (max-width: 768px) {
+    .modal-content {
+        max-height: 90vh;        /* 1. Evita que el modal sea más alto que la pantalla */
+        display: flex;
+        flex-direction: column;  /* 2. Alinea el contenido de forma vertical */
+    }
+
     .modal-body-layout {
         flex-direction: column;
+        overflow-y: auto;        /* 3. ¡LA MAGIA! Permite hacer scroll hacia abajo para ver el botón */
+        flex-grow: 1;
     }
+    
     .modal-gallery, .modal-details {
         width: 100%;
     }
+    
     .modal-gallery {
         padding: 10px;
     }
+    
     .modal-img-principal {
         height: 250px;
     }
+    
     .modal-details {
         padding: 20px;
     }
