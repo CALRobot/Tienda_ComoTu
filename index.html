@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como tú no hay dos | Tienda Online</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- CABECERA CON LOGOTIPO -->
+    <header class="main-header">
+        <div class="header-container">
+            <img src="images/logo.png" alt="Como tú no hay dos" class="logo">
+            <nav class="nav-menu">
+                <a href="#" class="active">Vestidos</a>
+                <a href="#">Colecciones</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BANNER DE BIENVENIDA -->
+    <section class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/banner-primavera.jpg');">
+        <div class="hero-text">
+            <h1>Nueva Colección</h1>
+            <p>Moda y Complementos con Alma</p>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR DE PRODUCTOS -->
+    <main class="store-container">
+        <h2 class="section-title">Nuestros Vestidos de Temporada</h2>
+        <!-- Grid dinámico -->
+        <div id="grid-productos" class="products-grid"></div>
+    </main>
+
+    <!-- BOTÓN FLOTANTE DEL CARRITO -->
+    <div class="cart-floating-btn" onclick="abrirCarritoVisual()">
+        <span class="cart-icon">🛒</span>
+        <span id="cart-badge" class="cart-badge">0</span>
+    </div>
+
+    <!-- PANEL LATERAL DEL CARRITO (SIDEBAR) -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-btn" onclick="cerrarCarritoVisual()">×</button>
+        </div>
+        <div id="cart-items" class="cart-sidebar-body">
+            <!-- Los artículos añadidos se verán aquí -->
+        </div>
+		<div class="cart-sidebar-footer">
+            <div class="total-container">
+                <span>Total:</span>
+                <span id="cart-total">0.00 €</span>
+            </div>
+            <!-- Nuevo contenedor para organizar los botones del carrito -->
+            <div class="cart-actions-container">
+                <button class="btn-checkout btn-whatsapp" onclick="enviarPedidoWhatsApp()">
+                    Confirmar por WhatsApp
+                </button>
+                <button class="btn-checkout btn-card" onclick="pagarConTarjeta()">
+                    Pagar con Tarjeta
+                </button>
+                <button class="btn-checkout btn-continue" onclick="cerrarCarritoVisual()">
+                    Seguir Comprando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALLE DE PRODUCTO (LA MEJOR MEJORA "ANTI-QUEJAS") -->
+    <div id="product-modal" class="modal-overlay" onclick="cerrarModalExterno(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="cerrarModal()">×</button>
+            <div class="modal-body-layout">
+                <!-- Zona Izquierda: Imagen del producto y galería elemental -->
+                <div class="modal-gallery">
+                    <img id="modal-main-img" src="" alt="" class="modal-img-principal">
+                    <!-- Miniaturas por si queremos más fotos en el futuro -->
+                    <div id="modal-thumbnails" class="modal-thumbnails"></div>
+                </div>
+                <!-- Zona Derecha: Detalles, tallas y acción -->
+                <div class="modal-details">
+                    <h2 id="modal-title" class="modal-title-text"></h2>
+                    <p id="modal-price" class="modal-price-text"></p>
+                    <p id="modal-desc" class="modal-desc-text"></p>
+                    
+                    <!-- Selector de Tallas -->
+                    <div class="tallas-section">
+                        <h4>Selecciona tu Talla:</h4>
+                        <div id="modal-tallas-container" class="tallas-buttons">
+                            <!-- Los botones de tallas se generarán aquí -->
+                        </div>
+                        <span id="talla-error" class="error-msg">Por favor, elige una talla</span>
+                    </div>
+
+                    <!-- Botón para añadir desde el modal -->
+                    <button id="modal-add-btn" class="btn-modal-add" onclick="agregarDesdeModal()">
+                        Añadir al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+<!-- PIE DE PÁGINA DEFINITIVO -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <!-- Columna 1: Contacto -->
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <div class="contact-item">
+                    <svg class="footer-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Calle Boutique de Moda, 12, Madrid</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="footer-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>+34 656 733 160</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="footer-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span>info@comotunohaydos.com</span>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="footer-map-link">
+                    <svg class="footer-icon" viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+                    Ver en el mapa
+                </a>
+            </div>
+
+            <!-- Columna 2: Navegación Central -->
+            <div class="footer-column footer-center">
+                <h3>Navegación</h3>
+                <img src="images/logo.png" alt="Como tú no hay dos" class="footer-logo">
+                <a href="#" class="home-icon-link" title="Volver al Inicio">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    Inicio
+                </a>
+            </div>
+
+            <!-- Columna 3: Síguenos -->
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="footer-socials">
+                    <a href="https://instagram.com" target="_blank">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m12.4 2.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://facebook.com" target="_blank">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"/></svg>
+                        Facebook
+                    </a>
+                    <a href="https://wa.me/34656733160" target="_blank">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.12c-.24.69-1.41 1.26-1.95 1.33-.49.06-.98.11-3.15-.74-2.77-1.09-4.52-3.92-4.66-4.11-.14-.19-1.13-1.51-1.13-2.88 0-1.37.71-2.04.97-2.31.26-.27.56-.34.75-.34.19 0 .37.01.53.02.17.01.4.01.62.53.23.56.79 1.93.86 2.07.07.14.11.31.02.48-.09.18-.14.28-.28.45-.14.17-.3.38-.43.51-.15.15-.31.32-.13.62.18.3.81 1.33 1.73 2.15.1.1.2.2.3.29.35.31.54.21.74-.02.19-.24.85-.99.97-1.33.12-.34.25-.29.43-.22.18.07 1.16.55 1.36.65.2.1.34.15.39.24.05.09.05.54-.19 1.23z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Como tú no hay dos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+	
+    <!-- CARGA DEL SCRIPT DE LA TIENDA -->
+    <script src="js/tienda.js"></script>
+</body>
+</html>

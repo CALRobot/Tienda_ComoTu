@@ -1,0 +1,790 @@
+/* ==========================================
+   ESTILOS GENERALES Y PALETA DE COLORES
+   ========================================== */
+:root {
+    --color-fondo: #FAFAFA;
+    --color-texto: #1A1A1A;
+    --color-acento: #F2C4C4; /* Rosa Pastel */
+    --color-blanco: #FFFFFF;
+    --fuente-titulos: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.main-header {
+    background-color: var(--color-blanco);
+    border-bottom: 1px solid #eaeaea;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    object-fit: contain;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--color-texto);
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-menu a.active {
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 5px;
+}
+
+/* ==========================================
+   HERO BANNER
+   ========================================== */
+.hero-banner {
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-blanco);
+}
+
+.hero-text h1 {
+    font-family: var(--fuente-titulos);
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+/* ==========================================
+   GRID DE PRODUCTOS
+   ========================================== */
+.store-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: var(--fuente-titulos);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.producto-tarjeta {
+    background: var(--color-blanco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.producto-tarjeta img {
+    width: 100%;
+    height: 450px; /* Forzamos a que midan exactamente lo mismo de alto */
+    object-fit: cover; /* Recorta sutilmente lo que sobre para que no se deforme */
+    object-position: center; /* Centra la imagen para que no tape lo importante */
+}
+
+.producto-tarjeta:hover {
+    transform: translateY(-5px);
+}
+
+.producto-img-container {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.producto-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.producto-tarjeta:hover .producto-img {
+    transform: scale(1.05);
+}
+
+.overlay-ver {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-ver span {
+    background: white;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+
+.producto-img-container:hover .overlay-ver {
+    opacity: 1;
+}
+
+.producto-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.producto-info h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.producto-info .desc {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 12px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.producto-info .precio {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    margin-bottom: 15px;
+}
+
+.btn-add {
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-add:hover {
+    opacity: 0.85;
+}
+
+/* ==========================================
+   BOTÓN FLOTANTE CARRITO
+   ========================================== */
+.cart-floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-texto);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 101;
+}
+
+.cart-icon {
+    font-size: 24px;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+}
+
+/* ==========================================
+   PANEL LATERAL (SIDEBAR) DEL CARRITO
+   ========================================== */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100vh;
+    background-color: var(--color-blanco);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 102;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+.cart-sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-sidebar-header h3 {
+    font-family: var(--fuente-titulos);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.cart-sidebar-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 10px;
+}
+
+.cart-item-img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details h4 {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.cart-item-talla {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.cart-item-details p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.cart-sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.btn-checkout {
+    background-color: var(--color-texto);
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-checkout:hover {
+    background-color: #333;
+}
+
+/* ==========================================
+   MODAL DE DETALLES (DISEÑO BOUTIQUE PREMIUM)
+   ========================================== */
+ 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 200;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--color-blanco);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--color-texto);
+}
+
+.modal-body-layout {
+    display: flex;
+    flex-wrap: wrap; /* Para móviles */
+}
+
+.modal-gallery {
+    width: 45%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-img-principal {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.modal-thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+.thumb-img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.6;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.thumb-img:hover, .thumb-img.active {
+    opacity: 1;
+    border-color: var(--color-acento);
+}
+
+.modal-details {
+    width: 55%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* En pantallas pequeñas adaptamos el modal */
+@media (max-width: 768px) {
+    .modal-body-layout {
+        flex-direction: column;
+    }
+    .modal-gallery, .modal-details {
+        width: 100%;
+    }
+    .modal-gallery {
+        padding: 10px;
+    }
+    .modal-img-principal {
+        height: 250px;
+    }
+    .modal-details {
+        padding: 20px;
+    }
+}
+
+.modal-title-text {
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.modal-price-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-bottom: 20px;
+}
+
+.modal-desc-text {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* TALLAS */
+.tallas-section {
+    margin-bottom: 30px;
+}
+
+.tallas-section h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.tallas-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.talla-btn {
+    background-color: var(--color-blanco);
+    border: 1px solid #ccc;
+    color: var(--color-texto);
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.talla-btn:hover {
+    border-color: var(--color-texto);
+}
+
+.talla-btn.active {
+    background-color: var(--color-texto);
+    color: var(--color-blanco);
+    border-color: var(--color-texto);
+}
+
+.error-msg {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    display: none;
+}
+
+.btn-modal-add {
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    border: none;
+    padding: 15px;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-modal-add:hover {
+    opacity: 0.9;
+}
+
+/* Blanqueamos el fondo de la imagen */
+#modal-main-img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 65vh !important;
+    object-fit: contain !important; /* Volvemos a contain para que no corte nada */
+    background-color: #ffffff !important; /* Fondo blanco puro */
+    background: #ffffff !important;
+    margin: 0 auto !important;
+}
+
+/* Forzamos a que CUALQUIER contenedor del modal sea blanco o transparente */
+#product-modal div, 
+#product-modal section,
+.modal-content div {
+    background-color: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================
+   NUEVOS BOTONES DEL CARRITO
+   ========================================== */
+.cart-actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Separación entre los botones */
+}
+
+/* Modificación del botón de WhatsApp (Fondo Verde) */
+.btn-whatsapp {
+    background-color: #25D366 !important;
+    color: white !important;
+}
+.btn-whatsapp:hover {
+    background-color: #128C7E !important;
+}
+
+/* Botón de Pago con Tarjeta (Fondo Negro) */
+.btn-card {
+    background-color: #000000 !important;
+    color: white !important;
+}
+.btn-card:hover {
+    background-color: #222222 !important;
+}
+
+/* Botón de Seguir Comprando (Rosa Palo) */
+.btn-continue {
+    background-color: #F2C4C4 !important; /* Mismo rosa de tu paleta actual */
+    color: #1A1A1A !important;
+}
+.btn-continue:hover {
+    opacity: 0.85;
+}
+
+/* ==========================================
+   PIE DE PÁGINA (FOOTER) - SOLUCIÓN LIMPIA
+   ========================================== */
+.main-footer {
+    background-color: var(--color-acento) !important;
+    color: var(--color-texto);
+    padding: 50px 20px 20px 20px;
+    margin-top: 60px;
+    font-family: var(--fuente-cuerpo);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas clavadas */
+    gap: 40px;
+    align-items: start; /* Alineados perfectamente por arriba */
+}
+
+.footer-column h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+}
+
+/* Columna Izquierda: Contacto */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.footer-map-link {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+.footer-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--color-texto);
+    flex-shrink: 0;
+}
+
+/* Columna Central: Navegación, Logo y botón espaciado */
+.footer-center {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Todo a la izquierda alineado */
+}
+
+.footer-logo {
+    display: block !important;
+    height: 38px !important;    /* Proporción real sin deformar */
+    width: auto !important;
+    object-fit: contain !important;
+    margin-top: 15px !important;
+    margin-bottom: 35px !important; /* <--- Genera el hueco limpio que querías */
+}
+
+.home-icon-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    text-decoration: none;
+    padding: 10px 22px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.home-icon-link:hover {
+    background: var(--color-texto);
+    color: white;
+}
+
+.btn-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+/* Columna Derecha: Redes Sociales */
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-socials a {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.footer-socials a:hover {
+    background: var(--color-texto);
+    color: white;
+}
+
+/* Copyright Inferior */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-center {
+        align-items: center !important;
+    }
+    .contact-item, .footer-map-link, .footer-socials a {
+        justify-content: center;
+    }
+}
