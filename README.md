@@ -18,3 +18,4 @@ Repositorio oficial del desarrollo de la tienda online con JavaScript, CSS optim
 * El dominio en Arsys se mantiene apuntando a Google Sites hasta que la tienda esté 100% operativa.
 * Las pruebas de carga y pasarela se realizarán bajo el dominio temporal gratuito de Vercel.
 * Por ahora no tenemos Pasarela de Pago. luego se creara una en Stipe Business.
+* continuará...
