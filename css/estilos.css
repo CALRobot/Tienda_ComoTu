@@ -795,3 +795,46 @@ body {
         justify-content: center;
     }
 }
+
+/* ==========================================
+   MENÚ HAMBURGUESA Y ADAPTACIÓN CABECERA
+   ========================================== */
+.menu-toggle {
+    display: none; /* Oculto por defecto en ordenadores */
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--color-texto);
+    cursor: pointer;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Visible en móviles */
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-blanco);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        display: none; /* Oculto hasta pulsar el botón */
+        border-top: 1px solid #eaeaea;
+    }
+
+    .nav-menu.active {
+        display: flex; /* Despliega el menú al pulsar */
+    }
+
+    .nav-menu a {
+        margin-left: 0;
+        font-size: 1rem;
+    }
+}
