@@ -17,10 +17,17 @@
     <header class="main-header">
         <div class="header-container">
             <img src="images/logo.png" alt="Como tú no hay dos" class="logo">
-            <nav class="nav-menu">
-                <a href="#" class="active">Vestidos</a>
-                <a href="#">Colecciones</a>
-                <a href="#">Contacto</a>
+            
+            <!-- Botón Hamburguesa (solo visible en móviles) -->
+            <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">
+                ☰
+            </button>
+
+            <!-- Menú de navegación -->
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#" class="active" onclick="toggleMenu()">Vestidos</a>
+                <a href="#" onclick="toggleMenu()">Colecciones</a>
+                <a href="#" onclick="toggleMenu()">Contacto</a>
             </nav>
         </div>
     </header>
