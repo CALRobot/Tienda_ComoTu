@@ -485,7 +485,7 @@ body {
 
 /* En pantallas pequeñas adaptamos el modal */
 @media (max-width: 768px) {
-    /* Mantenemos lo que ya teníamos del modal */
+    /* Modal en móvil */
     .modal-content {
         max-height: 85vh;
         overflow-y: auto;
@@ -507,11 +507,12 @@ body {
         padding: 20px;
     }
 
-    /* 📸 SOLUCIÓN CABEZAS RECORTADAS EN PÁGINA PRINCIPAL */
+    /* 👗 ENFOQUE PERFECTO DE PRODUCTO EN MÓVIL */
     .producto-tarjeta img, 
     .producto-img {
-        height: 320px; /* Reducimos la altura en móvil para que encaje mejor la proporción */
-        object-position: top center; /* Enfoca siempre hacia arriba para asegurar que NUNCA corte las cabezas */
+        height: 380px;              /* Altura ideal para encuadrar medio cuerpo/3-cuartos */
+        object-fit: cover;
+        object-position: 50% 15%;   /* Centra la cara y destaca el vestido/torso */
     }
 }
 
