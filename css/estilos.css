@@ -120,11 +120,14 @@ body {
     transition: transform 0.3s ease;
 }
 
-.producto-tarjeta img {
+.producto-tarjeta img,
+.producto-img {
     width: 100%;
-    height: 450px; /* Forzamos a que midan exactamente lo mismo de alto */
-    object-fit: cover; /* Recorta sutilmente lo que sobre para que no se deforme */
-    object-position: center; /* Centra la imagen para que no tape lo importante */
+    height: auto;             /* La altura se calcula sola según la foto */
+    max-height: 420px;        /* Límite para que no se hagan gigantes */
+    object-fit: contain;      /* MUESTRA LA FOTO ENTERA SIN RECORTAR NADA */
+    background-color: #fafafa; /* Fondo para rellenar si la foto es más estrecha */
+    display: block;
 }
 
 .producto-tarjeta:hover {
@@ -485,34 +488,24 @@ body {
 
 /* En pantallas pequeñas adaptamos el modal */
 @media (max-width: 768px) {
-    /* Modal en móvil */
+    /* Mantenemos la corrección del modal que ya funciona */
     .modal-content {
         max-height: 85vh;
         overflow-y: auto;
     }
-
     .modal-body-layout {
         flex-direction: column;
     }
-
     .modal-gallery, .modal-details {
         width: 100%;
     }
 
-    .modal-gallery {
-        padding: 10px;
-    }
-
-    .modal-details {
-        padding: 20px;
-    }
-
-    /* 👗 ENFOQUE PERFECTO DE PRODUCTO EN MÓVIL */
+    /* 📱 FOTOS ENTERAS EN MÓVIL */
     .producto-tarjeta img, 
     .producto-img {
-        height: 380px;              /* Altura ideal para encuadrar medio cuerpo/3-cuartos */
-        object-fit: cover;
-        object-position: 50% 15%;   /* Centra la cara y destaca el vestido/torso */
+        height: auto;
+        max-height: 350px;
+        object-fit: contain;
     }
 }
 
