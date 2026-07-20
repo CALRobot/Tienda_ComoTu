@@ -485,9 +485,10 @@ body {
 
 /* En pantallas pequeñas adaptamos el modal */
 @media (max-width: 768px) {
+    /* Mantenemos lo que ya teníamos del modal */
     .modal-content {
         max-height: 85vh;
-        overflow-y: auto; /* Permite scroll interno de todo el modal en móvil sin romper el layout */
+        overflow-y: auto;
     }
 
     .modal-body-layout {
@@ -504,6 +505,13 @@ body {
 
     .modal-details {
         padding: 20px;
+    }
+
+    /* 📸 SOLUCIÓN CABEZAS RECORTADAS EN PÁGINA PRINCIPAL */
+    .producto-tarjeta img, 
+    .producto-img {
+        height: 320px; /* Reducimos la altura en móvil para que encaje mejor la proporción */
+        object-position: top center; /* Enfoca siempre hacia arriba para asegurar que NUNCA corte las cabezas */
     }
 }
 
