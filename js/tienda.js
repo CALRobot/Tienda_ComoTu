@@ -322,3 +322,11 @@ function pagarConTarjeta() {
     // Alerta temporal solicitada para simular la pasarela
     alert("Abriendo pasarela de pago segura... (Simulación)");
 }
+
+// Función para abrir/cerrar el menú hamburguesa en móviles
+function toggleMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu) {
+        navMenu.classList.toggle('active');
+    }
+}
