@@ -32,7 +32,7 @@ const inventario = {
                 nombre: "Vestido Ibiza Blanco", 
                 precio: 49.95, 
                 desc: "Clásico estilo ibicenco 100% algodón con detalles bordados en el pecho y bajo asimétrico.",
-                tallas: ["XS", "S", "M", "L"],
+                tallas: ["S", "M", "L"],
                 fotosExtra: []
             },
             { 
