@@ -88,6 +88,11 @@ let tallaSeleccionada = "";
 
 // Cargar productos dinámicamente en la web al iniciar
 document.addEventListener("DOMContentLoaded", () => {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        actualizarUI();
+    }
     renderizarProductos();
 });
 
@@ -272,6 +277,9 @@ function actualizarUI() {
     });
 
     document.getElementById("cart-total").textContent = totalDinero.toFixed(2) + " €";
+    
+    // Guardar carrito en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
 function eliminarDelCarrito(idUnico) {
