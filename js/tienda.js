@@ -13,7 +13,7 @@ const inventario = {
             { 
                 id: 1, 
                 nombre: "Vestido Verde Fiesta", 
-                precio: 88.90, 
+                precio: 48.90, 
                 desc: "Elegante vestido de fiesta con una caída espectacular y espalda abierta. Ideal para eventos de noche en verano.",
                 tallas: ["S", "M", "L"],
                 // Opcional: más fotos. Si no las pones, usará solo la principal
@@ -22,7 +22,7 @@ const inventario = {
             { 
                 id: 2, 
                 nombre: "Vestido Marino Casual", 
-                precio: 65.00, 
+                precio: 48.90, 
                 desc: "Tejido fresco de lino, ideal para el día a día. Cómodo, ligero y con bolsillos laterales.",
                 tallas: ["S", "M", "L", "XL"],
                 fotosExtra: []
@@ -30,7 +30,7 @@ const inventario = {
             { 
                 id: 3, 
                 nombre: "Vestido Ibiza Blanco", 
-                precio: 49.95, 
+                precio: 48.90, 
                 desc: "Clásico estilo ibicenco 100% algodón con detalles bordados en el pecho y bajo asimétrico.",
                 tallas: ["S", "M", "L"],
                 fotosExtra: []
@@ -38,7 +38,7 @@ const inventario = {
             { 
                 id: 4, 
                 nombre: "Vestido Lino Arena", 
-                precio: 55.00, 
+                precio: 48.90, 
                 desc: "Corte recto, cuello camisero y tacto ultra suave. Perfecto para un look sofisticado de tarde.",
                 tallas: ["S", "M", "L"],
                 fotosExtra: []
@@ -54,7 +54,7 @@ const inventario = {
             { 
                 id: 6, 
                 nombre: "Vestido Rojo Coral", 
-                precio: 70.00, 
+                precio: 38.90, 
                 desc: "Escote halter y espalda cruzada muy favorecedora. Un color vibrante para tus noches de verano.",
                 tallas: ["S", "M"],
                 fotosExtra: []
@@ -70,7 +70,7 @@ const inventario = {
             { 
                 id: 8, 
                 nombre: "Vestido Boho Largo", 
-                precio: 59.95, 
+                precio: 48.90, 
                 desc: "Estilo bohemio con manga tres cuartos, escote en pico y detalles de encaje.",
                 tallas: ["S", "M", "L"],
                 fotosExtra: []
