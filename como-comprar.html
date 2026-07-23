@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Como tú no hay dos | Tienda Online</title>
+    <title>Cómo Comprar | Como tú no hay dos</title>
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Archivo CSS externo -->
     <link rel="stylesheet" href="css/estilos.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .page-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: #1A1A1A;
+        }
+        .page-content h1, .page-content h2 {
+            font-family: 'Playfair Display', serif;
+        }
+        .page-content h1 {
+            margin-bottom: 30px;
+        }
+        .page-content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #1A1A1A;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,99 +46,35 @@
 
             <!-- Menú de navegación -->
             <nav class="nav-menu" id="nav-menu">
-                <a href="index.html" class="active" onclick="toggleMenu()">Tienda</a>
-                <a href="como-comprar.html" onclick="toggleMenu()">Condiciones</a>
+                <a href="index.html" onclick="toggleMenu()">Tienda</a>
+                <a href="como-comprar.html" class="active" onclick="toggleMenu()">Condiciones</a>
                 <a href="#contacto" onclick="toggleMenu()">Contacto</a>
             </nav>
         </div>
     </header>
 
-    <!-- BANNER DE BIENVENIDA -->
-    <section class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/banner-primavera.jpg');">
-        <div class="hero-text">
-            <h1>Nueva Colección</h1>
-            <p>Moda y Complementos con Alma</p>
-        </div>
-    </section>
+    <!-- CONTENIDO DE LA PÁGINA -->
+    <main class="page-content">
+        <h1>Cómo Comprar</h1>
+        
+        <p>Muy simple, buscas el producto que te guste y pulsas el botón Comprar, se abrirá un chat a nuestro WhatsApp, y así nos preguntas lo que desees, y nos ponemos de acuerdo sobre como y donde enviártelo. No olvides poner el código del producto de tú interés por favor. Debajo puedes leer las Condiciones de compra. Además contamos con tienda física donde puedes encontrar mucho más, debajo encuentras la dirección y modo de contacto. Ven a visitarnos, te esperamos.</p>
+        
+        <p>Para visualizar todos los productos desde tu télefono móvil, haz clic en las tres rayitas en la parte superior de tu pantalla.</p>
 
-    <!-- CONTENEDOR DE PRODUCTOS -->
-    <main class="store-container">
-        <h2 class="section-title">Nuestros Vestidos de Temporada</h2>
-        <!-- Grid dinámico -->
-        <div id="grid-productos" class="products-grid"></div>
+        <h2>Modo de Envío</h2>
+        <p>Por compras mayores a € 50, el envío es gratuito. Por compras inferiores y fuera de España, consultar. En España Usamos las tarifas de Correos.</p>
+
+        <h2>Forma de Pago</h2>
+        <p>Aceptamos Bizum, Transferencia , o Contrareembolso , no comprometer tus datos es nuestra regla. En nuestra tienda física recibimos Tarjetas o Efectivo.</p>
+
+        <h2>Modo Seguro</h2>
+        <p>El botón Comprar abre un chat para ponernos de acuerdo y responder tus consultas. No queremos comprometer tus datos o Tarjeta. Y puedes pagarlo en efectivo al recibirlo.</p>
+
+        <h2>Devoluciones</h2>
+        <p>Tienes 10 días para devolver el producto comprado, eso sí, debes asumir los gastos de envío. El reembolso será inmediato al recibirlo y por Bizum o Transferencia.</p>
     </main>
 
-    <!-- BOTÓN FLOTANTE DEL CARRITO -->
-    <div class="cart-floating-btn" onclick="abrirCarritoVisual()">
-        <span class="cart-icon">🛒</span>
-        <span id="cart-badge" class="cart-badge">0</span>
-    </div>
-
-    <!-- PANEL LATERAL DEL CARRITO (SIDEBAR) -->
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-sidebar-header">
-            <h3>Tu Carrito</h3>
-            <button class="close-btn" onclick="cerrarCarritoVisual()">×</button>
-        </div>
-        <div id="cart-items" class="cart-sidebar-body">
-            <!-- Los artículos añadidos se verán aquí -->
-        </div>
-		<div class="cart-sidebar-footer">
-            <div class="total-container">
-                <span>Total:</span>
-                <span id="cart-total">0.00 €</span>
-            </div>
-            <!-- Nuevo contenedor para organizar los botones del carrito -->
-            <div class="cart-actions-container">
-                <button class="btn-checkout btn-whatsapp" onclick="enviarPedidoWhatsApp()">
-                    Confirmar por WhatsApp
-                </button>
-                <button class="btn-checkout btn-card" onclick="pagarConTarjeta()">
-                    Pagar con Tarjeta
-                </button>
-                <button class="btn-checkout btn-continue" onclick="cerrarCarritoVisual()">
-                    Seguir Comprando
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE DETALLE DE PRODUCTO (LA MEJOR MEJORA "ANTI-QUEJAS") -->
-    <div id="product-modal" class="modal-overlay" onclick="cerrarModalExterno(event)">
-        <div class="modal-content">
-            <button class="modal-close" onclick="cerrarModal()">×</button>
-            <div class="modal-body-layout">
-                <!-- Zona Izquierda: Imagen del producto y galería elemental -->
-                <div class="modal-gallery">
-                    <img id="modal-main-img" src="" alt="" class="modal-img-principal">
-                    <!-- Miniaturas por si queremos más fotos en el futuro -->
-                    <div id="modal-thumbnails" class="modal-thumbnails"></div>
-                </div>
-                <!-- Zona Derecha: Detalles, tallas y acción -->
-                <div class="modal-details">
-                    <h2 id="modal-title" class="modal-title-text"></h2>
-                    <p id="modal-price" class="modal-price-text"></p>
-                    <p id="modal-desc" class="modal-desc-text"></p>
-                    
-                    <!-- Selector de Tallas -->
-                    <div class="tallas-section">
-                        <h4>Selecciona tu Talla:</h4>
-                        <div id="modal-tallas-container" class="tallas-buttons">
-                            <!-- Los botones de tallas se generarán aquí -->
-                        </div>
-                        <span id="talla-error" class="error-msg">Por favor, elige una talla</span>
-                    </div>
-
-                    <!-- Botón para añadir desde el modal -->
-                    <button id="modal-add-btn" class="btn-modal-add" onclick="agregarDesdeModal()">
-                        Añadir al Carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-	
-<!-- PIE DE PÁGINA DEFINITIVO -->
+    <!-- PIE DE PÁGINA -->
     <footer id="contacto" class="main-footer">
         <div class="footer-container">
             <!-- Columna 1: Contacto -->
@@ -145,7 +102,7 @@
             <div class="footer-column footer-center">
                 <h3>Navegación</h3>
                 <img src="images/logo.png" alt="Como tú no hay dos" class="footer-logo">
-                <a href="#" class="home-icon-link" title="Volver al Inicio">
+                <a href="index.html" class="home-icon-link" title="Volver al Inicio">
                     <svg class="btn-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                     Inicio
                 </a>
@@ -174,7 +131,35 @@
             <p>&copy; 2026 Como tú no hay dos. Todos los derechos reservados. | Versión 1.0.1 | <a href="https://github.com/CALRobot/Tienda_ComoTu/blob/main/MANUAL.md" target="_blank" style="color: var(--color-texto);">Ver Manual</a></p>
         </div>
     </footer>
-	
+
+    <!-- BOTÓN FLOTANTE DEL CARRITO (OCULTO EN ESTA PÁGINA) -->
+    <div class="cart-floating-btn" style="display: none;" onclick="abrirCarritoVisual()">
+        <span class="cart-icon">🛒</span>
+        <span id="cart-badge" class="cart-badge">0</span>
+    </div>
+
+    <!-- PANEL LATERAL DEL CARRITO (OCULTO EN ESTA PÁGINA) -->
+    <div id="cart-sidebar" class="cart-sidebar" style="display: none;">
+        <div class="cart-sidebar-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-btn" onclick="cerrarCarritoVisual()">×</button>
+        </div>
+        <div id="cart-items" class="cart-sidebar-body"></div>
+        <div class="cart-sidebar-footer">
+            <div class="total-container">
+                <span>Total:</span>
+                <span id="cart-total">0.00 €</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALLE DE PRODUCTO (OCULTO EN ESTA PÁGINA) -->
+    <div id="product-modal" class="modal-overlay" style="display: none;" onclick="cerrarModalExterno(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="cerrarModal()">×</button>
+        </div>
+    </div>
+
     <!-- CARGA DEL SCRIPT DE LA TIENDA -->
     <script src="js/tienda.js"></script>
 </body>
